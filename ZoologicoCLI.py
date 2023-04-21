@@ -1,3 +1,5 @@
+from pymongo import collection
+
 from ZoologicoDAO import ZoologicoDAO
 from Animal import Animal
 from Cuidador import Cuidador
@@ -8,6 +10,7 @@ from database import Database
 db = Database(database="Zoologico", collection="Animais") #Inicializando o banco de dados chamado Zoologico e com a collections chamada Animais
 db.resetDatabase() #Resetando o banco de dados
 Animal_model = ZoologicoDAO(db) #Inicializando o CRUD do BD
+
 
 
 index = 0 #Index que serve como id do cuidador atual
@@ -90,3 +93,6 @@ def updateAnimal(animal: Animal, nome: str):
 
 def deleteAnimal(id: str):
     Animal_model.deleteAnimal(id) #Chamando o método para deletar o objeto guardado no collection pelo id
+
+def returnQuantityDocuments():
+    return Animal_model.qnt_documentos

@@ -1,14 +1,20 @@
 
 from bson.objectid import ObjectId
+from pymongo import collection
 
 import ZoologicoCLI
 from Animal import Animal
 
 
 class ZoologicoDAO:
+
+    qnt_documentos = 0
     def __init__(self, database):
         self.db = database
         self.collection = database.collection
+        global qnt_documentos
+        qnt_documentos = self.collection.count_documents({})
+
 
     def createAnimal(self, animal:Animal) -> str: #Criando a collection
         try:
