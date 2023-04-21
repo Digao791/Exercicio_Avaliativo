@@ -21,7 +21,7 @@ while True:
     if resposta == "C":
         action.create_Animal() #Chamando o método para criar o Animal
     elif resposta == "R":
-        if action.returnQuantityDocuments() == 0: #Se eu não tenho animal nenhum no collections
+        if action.db.collection.count_documents({}) == 0: #Se eu não tenho animal nenhum no collections
             print("Crie um animal primeiro")
         else:
             print("Qual animal voce quer ler ?")
@@ -31,7 +31,7 @@ while True:
             action.readAnimal(action.animal_obj_id[id]) #Chamando o método para Ler o animal com o id escolhido
 
     elif resposta == "U":
-        if action.returnQuantityDocuments() == 0:
+        if action.db.collection.count_documents({}) == 0:
             print("Crie um animal primeiro")
         else:
             print("Qual animal voce quer atuaizar ?")
@@ -47,7 +47,7 @@ while True:
             action.animal_obj_name[id] = nome #Atualizando o  nome do animal com o id escolhido na lista dos nomes
 
     elif resposta == "D":
-        if action.returnQuantityDocuments() == 0:
+        if action.db.collection.count_documents({}) == 0:
             print("Crie um animal primeiro")
         else:
             print("Qual animal voce quer deletar ?")
